@@ -11,6 +11,7 @@ const mySchema = new mongoose.Schema({
   duration:Number,
   semesterFees:Number,
   totalAmountPaid:Number,
+  address:String,
   createdAt: { type: Date, default: new Date() },
 });
 

@@ -1,18 +1,88 @@
+import { Button, Card, CardContent, Grid, Paper, TextField } from "@mui/material";
+
 const Contactus = () =>{
     return(
+        <div className="maindiv">
+            {/* main div */}
+
         <div className="cont1">
+            {/* for background image */}
+            <h1>CONTACT US</h1>
+            <div>
 
-           <p>
-           BNCET is a consortium of leading colleges of International standards has been established under the auspicious aegis of Baij Nath Charitable and Educational Trust in the year 2008 for setting trends and raising standards for management and technical education.
-           The objective of our Techno-Managerial programs is to equip our students with knowledge, skills and confidence needed to develop corporate leaders, strategists and decision makers who can significantly contribute in nation building exercise.
-           An exhaustive, intensive industry and trade related curriculum covers almost all the functional dimensions of techno managerial education. Case studies, live projects, presentations, seminars, symposiums, internships, study trips and industrial visits part and parcel of the program.
-           It is our endeavor to make each BNCETian a success story and BNCET as a pre-eminent techno management college of India for nurturing talent and advancing knowledge in multi ethnic learning environment.
-           </p>
+            </div>
+     </div>
+
+     <div className="mt-2">
+         
+             
+                 <Grid container justifyContent="end">
+                     <Grid item md={6}>
+                         <Card className="content">
+                             <CardContent>
+                                <TextField
+                                className="w-100 mt-2"
+                                autoComplete="off" 
+                                placeholder="Name" 
+                                label="Name"/>
 
 
-      
+                                <TextField
+                                className="w-100 mt-2"
+                                autoComplete="off" 
+                                placeholder="Phone Number" 
+                                label="Phone Number"/>
 
-   
+
+                                <TextField
+                                className="w-100 mt-2"
+                                autoComplete="off" 
+                                placeholder="Email" 
+                                label="Email"/>
+
+
+                                <TextField
+                                className="w-100 mt-2"
+                                autoComplete="off" 
+                                placeholder="Subject" 
+                                label="Subject"/>
+
+
+                                <TextField
+                                className="w-100 mt-2"
+                                autoComplete="off" 
+                                placeholder="Message" 
+                                label="Message"/>
+                                  
+                                  <Button 
+                                  variant="outlined"
+                                  className="w-100 mt-2">
+                                      SUBMIT
+                                  </Button>
+                             </CardContent>
+
+                         </Card>
+                     </Grid>
+                    
+
+                     <Grid item md={6}>
+                     <h1>GET IN TOUCH WITH US</h1>
+                     <h3 className="msg">Send a Message</h3>
+                     <h2 className="font">We Will Always </h2>
+                     <h2 className="font"> Here To</h2>
+                     <h2 className="font">Listen You</h2>
+                     </Grid>
+                     
+                 </Grid>
+
+
+
+
+                    
+             
+         
+     </div>
+
      </div>
     )
 

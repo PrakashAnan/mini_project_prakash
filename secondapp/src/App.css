@@ -1,3 +1,6 @@
+*{
+  margin: 0px;
+}
 .App {
   text-align: center;
 }
@@ -45,11 +48,11 @@
   font-weight: bold;
 }
 .login-container{
-  height: 100vh;
+  height: 100px;
   background-color: #61dafb;
 }
 .logo{
-  width: 200px;
+  width: 300px;
 }
 .college1{
   border: 2px solid rgb(3, 10, 1);
@@ -58,14 +61,14 @@
 }
 .top-header_contact{
   color: #dedfe2;
-  display: inline;
-  padding: 25px;
+  display:inline;
+  padding:  12px;
   font-weight: bold;
 }
 
 .contact1{
   background: #454546;
-  height: 40px;
+  height: 50px;
   margin: 0;
 
 }
@@ -83,7 +86,9 @@
 /* for login pagee */
 
 .back1{
-  background-image: url("https://media.istockphoto.com/photos/modern-keyboard-wih-blue-log-in-button-picture-id638149354?b=1&k=20&m=638149354&s=170667a&w=0&h=K_dd1EuWBMmyU0A5IN4igEUROFozhvtj7CtJ0GswHLE=");
+  background: url("https://wallpaperaccess.com/full/1900857.jpg");
+  background-size: no-repeat;
+  background-size: cover;
   
 }
 
@@ -91,17 +96,77 @@
   background-image: linear-gradient(to left, rgb(145, 218, 252),rgba(253, 164, 164, 0.192))
 }
 
-
 /* .img1{
   height: 480px;
 } */
-
-.cont1{
-  background-image: url("https://wallpapercave.com/wp/wp2225002.jpg");
-  height: 300px;
-  opacity: 0.9;
-
-  
+.content{
+  background-color: #25D366;
 }
 
+.cont1{
+  
+  /* background-size: no-repeat;
+  background-size: auto; */
+  background: url("https://www.fifteendesign.co.uk/wp-content/uploads/2015/12/contact-1.jpg");
+  height: 400px;
+  opacity: 0.9;
+}
 
+.font{
+   font-weight: bold;
+}
+
+.msg{
+  
+  color: rgb(113, 113, 223);
+}
+.maindiv{
+  background-color: #ababbe;
+}
+
+.save{
+  text-align: left;
+}
+.gall{
+  background-color: #b0c6cc;
+}
+
+.fa-brands{
+  padding: 15px;
+  font-size: 20px;
+  margin: 15px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+/* Facebook */
+.fa-facebook-f{
+  background: #3B5998;
+  color:white;
+}
+.fa-brands:hover {
+  opacity: 0.7;
+}
+
+/* Twitter */
+.fa-whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+.fa-instagram{
+  background: #bc2a8d;
+  color: white;
+}
+
+.or{
+  margin: 30px;
+  font-weight: bold;
+  font-family:sans-serif;
+}
+
+.rem{
+  text-align: left;
+}

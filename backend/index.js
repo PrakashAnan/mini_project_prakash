@@ -3,8 +3,7 @@ const app= express();
 const port=5000;
 const cors=require('cors');
 
-const userRouter = require("./router/userRouter");
-const productRouter = require("./router/productRouter");
+const userRouter = require("./Router/studentRouter");
 const utilRouter = require("./router/utils");
 
 const {createServer,}=require("http");
@@ -33,7 +32,7 @@ app.use(cors({
 
 }))
 app.use("/user", userRouter);
-app.use("/product", productRouter);
+// app.use("/product", productRouter);
 app.use("/util", utilRouter);
 
 
