@@ -85,6 +85,12 @@ const productForm = {
                             value={values.dob}
                             onChange={handleChange}/>
 
+                <TextField
+                  className="w-100 mt-3"
+                  autoComplete="off"
+                  placeholder="Fathername"
+                  label="Fathername"
+                />
 
                             <TextField 
                             className="w-100 mt-3" 
@@ -95,6 +101,12 @@ const productForm = {
                             value={values.cousename}
                             onChange={handleChange}/>
 
+                <TextField
+                  className="w-100 mt-3"
+                  autoComplete="off"
+                  placeholder="coursename"
+                  label="Coursename"
+                />
 
                             <TextField 
                             className="w-100 mt-3" 
@@ -114,6 +126,11 @@ const productForm = {
                             value={values.address}
                             onChange={handleChange}/>
 
+                <TextField
+                  className="w-100 mt-3"
+                  placeholder="admissiondate"
+                  label="Admissiondate"
+                />
 
                             <TextField 
                             className="w-100 mt-3" 
@@ -123,6 +140,11 @@ const productForm = {
                             value={values.addmissiondate}
                             onChange={handleChange}/>
 
+                <TextField
+                  className="w-100 mt-3"
+                  placeholder="semesterfees"
+                  label="Semesterfees"
+                />
 
                             <TextField 
                             className="w-100 mt-3" 
