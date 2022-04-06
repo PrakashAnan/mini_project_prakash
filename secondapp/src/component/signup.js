@@ -1,83 +1,151 @@
 import { CheckBox } from "@material-ui/icons";
-import {Button, Card, CardContent, Checkbox, Grid, paper, TextField} from "@mui/material"
+import {
+  Button,
+  Card,
+  CardContent,
+  Checkbox,
+  Grid,
+  paper,
+  TextField,
+} from "@mui/material";
+import { Formik } from "formik";
+import Swal from "sweetalert2";
+import app_config from "./config";
 
 const Signup = () => {
-    return(
-     <div className="color2">
-        <paper className="login-container">
-            <Grid container justifyContent="center">
-              <Grid item md={4} sm={2}>
-              <Card className="mt-4 mb-4">
-                {/* for making card color */}
-                <CardContent className="color1">
+  const url = app_config.api_url;
+
+  const signupForm = {
+    username: "",
+    password: "",
+    email: "",
+    mobileno: "",
+  };
+  const signupSubmit = (values) => {
+    console.log(values);
+    fetch(url + "/teacher/add", {
+      method: "POST",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json",},
+    })
+    .then((res) => {
+      console.log(res.status);
+      if (res.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Registered Successfully",
+        });
+      }
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data);
+    });
+
+    
+  };
+
+  return (
+    <div className="color2">
+      <paper className="login-container">
+        <Grid container justifyContent="center">
+          <Grid item md={4} sm={2}>
+            <Card className="mt-4 mb-4">
+              {/* for making card color */}
+              <CardContent className="color1">
                 <p className="h2 text-center mb-5 mt-5 ">SIGNUP HERE</p>
 
-                    <TextField 
-                    className="w-100"
-                    autoComplete="off" 
-                    placeholder="Username" 
-                    label="Username"/>
+                <Formik initialValues={signupForm} onSubmit={signupSubmit}>
+                  {({ values, handleChange, handleSubmit }) => (
 
-                    
-                    <TextField 
-                    className="w-100 mt-3" 
-                    autoComplete="off"
-                    placeholder="Email" 
-                    label="Email"/>
+                    <form onSubmit={handleSubmit}>
+                      <TextField
+                        className="w-100"
+                        autoComplete="off"
+                        placeholder="Username"
+                        label="username"
+                        id="username"
+                        onChange={handleChange}
+                        value={values.username}
+                      />
 
-                    <TextField 
-                    className="w-100 mt-3" 
-                    autoComplete="off"
-                    placeholder="Mobile No" 
-                    label="Mobile No"/>
+                      <TextField
+                        className="w-100 mt-3"
+                        autoComplete="off"
+                        placeholder="Email"
+                        label="email"
+                        id="email"
+                        onChange={handleChange}
+                        value={values.email}
+                      />
 
+                      <TextField
+                        className="w-100 mt-3"
+                        autoComplete="off"
+                        placeholder="Mobile No"
+                        label="mobileno"
+                        id="mobileno"
+                        onChange={handleChange}
+                        value={values.mobileno}
+                      />
 
-                    <TextField 
-                    className="w-100 mt-3" 
-                    autoComplete="off"
-                    placeholder="Password" 
-                    label="Password"/>
+                      <TextField
+                        className="w-100 mt-3"
+                        autoComplete="off"
+                        placeholder="Password"
+                        label="password"
+                        id="password"
+                        onChange={handleChange}
+                        value={values.password}
+                      />
 
+                      {/* <TextField
+                        className="w-100 mt-3"
+                        autoComplete="off"
+                        placeholder="Password"
+                        label="Password"
+                        id="password"
+                        onChange={handleChange}
+                        value={values.password}
+                      /> */}
 
-                    <TextField 
-                    className="w-100 mt-3" 
-                    placeholder="Repeat Password" 
-                    label="Repeat Password"/>
+                      <div className="mt-3 save">
+                        <CheckBox></CheckBox>
+                        <span></span>
+                        <p>Save Password</p>
+                      </div>
 
-                   <div className="mt-3 save">
-                     <CheckBox></CheckBox><span></span>
-                     <p>Save Password</p>
-                   </div>
-
-                    <Button variant="contained"
-                    color="secondary"
-                    className="button w-100 mt-4" >
-                    Signin To Continue
-                    </Button>
-                   
-
-                    </CardContent>
-                </Card>
-              </Grid>
-            </Grid>
-            
-            
-            </paper>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        type="submit"
+                        className="button w-100 mt-4"
+                      >
+                        Signin To Continue
+                      </Button>
+                    </form>
+  )}
+                </Formik>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </paper>
     </div>
-    );
-}
+  );
+};
 export default Signup;
 
-
-
-// <div className="parag"> 
+// <div className="parag">
 
 // import { Button, Card, CardContent, Grid, Paper, TextField } from "@mui/material"
 
 // const Signup = () => {
 //     return (
 //         <div className="mt-3 teacher_signup">
-//             <Paper className="login-container2">    
+//             <Paper className="login-container2">
 //                 <Grid container justifyContent="center">
 //                     <Grid md={3} sm={4}>
 //                         <Card>
@@ -93,7 +161,6 @@ export default Signup;
 //                                                     label="name"
 //                                                     variant="outlined"
 //                                                 />
-
 
 //                                                 <TextField
 //                                                     className="w-100 mt-3"

@@ -1,13 +1,13 @@
 const mongoose = require("../connection");
 
 const mySchema = new mongoose.Schema({
-  name:String,
+  studentName:String,
   fatherName:String,
-  dob:Date,
+  dob:String,
   rollno:Number,
   courseName:String,
   branchName:String,
-  admissionDate:Date,
+  admissionDate:String,
   duration:Number,
   semesterFees:Number,
   totalAmountPaid:Number,

@@ -3,7 +3,9 @@ const app= express();
 const port=5000;
 const cors=require('cors');
 
-const userRouter = require("./Router/studentRouter");
+const studentRouter = require("./Router/studentRouter");
+const contactRouter = require("./Router/contactRouter");
+const teacherRouter = require("./Router/teacherRouter");
 const utilRouter = require("./router/utils");
 
 const {createServer,}=require("http");
@@ -31,25 +33,11 @@ app.use(cors({
     origin : ['http://localhost:3000']
 
 }))
-app.use("/user", userRouter);
-// app.use("/product", productRouter);
+app.use("/student", studentRouter);
+app.use("/teacher", teacherRouter);
+app.use("/contact", contactRouter);
 app.use("/util", utilRouter);
 
-
-// for serving static resources
-app.use(express.static("./uploads"));
-// isse pta chlega kha jaega or kya lganna pdega issse or ye connection k liye use karte hai
-
-//    app.get("/",(req,res) => {
-//    res.send("you got a resonse");
-// })
-// app.get("/home",(req,res) => {
-//     res.send("you got a resonse from home");
-// })
-
-// app.listen(port,()=>{
-//     console.log(" server started")
-// })
 
 //    for using socket.io
 httpServer.listen(port,()=>{
