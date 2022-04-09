@@ -29,6 +29,17 @@ router.get("/getall", (req, res) => {
     });
 });
 
+router.delete("/delete/:id", (req, res) => {
+  Model.findByIdAndDelete(req.params.id)
+    .then((data) => {
+      console.log("student list fetched successfully..");
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 // for exporting router
 module.exports = router;

@@ -13,43 +13,39 @@ import { Formik } from "formik";
 import app_config from "./config";
 import { useState } from "react";
 
-
 const AddStudent = () => {
+  const url = app_config.api_url;
+  const [currentUser, setcurrentUser] = useState(
+    JSON.parse(sessionStorage.getItem("user"))
+  );
 
-    const url = app_config.api_url;
-    const [currentUser, setcurrentUser] = useState(
-      JSON.parse(sessionStorage.getItem("user"))
-    )
-  
-// 1.CREATE A FORM OBJECT
+  // 1.CREATE A FORM OBJECT
   const productForm = {
-  studentName:"",
-  fatherName:"",
-  dob:"",
-  rollno:"",
-  courseName:"",
-  branchName:"",
-  address:"",
-  addmissionDate:"",
-  duration:"",
-  semesterFees:"",
-  totalAmountPaid:"",
- 
-  };    
+    studentName: "",
+    fatherName: "",
+    dob: "",
+    rollno: "",
+    courseName: "",
+    branchName: "",
+    address: "",
+    addmissionDate: new Date(),
+    duration: "",
+    semesterFees: "",
+    semester: 1,
+    totalAmountPaid: "",
+  };
 
-
-//   2.CREATION A SUBMIT CALLBACK FUNCTION
+  //   2.CREATION A SUBMIT CALLBACK FUNCTION
   const submitStudent = (values) => {
     fetch(url + "/student/add", {
       method: "POST",
       body: JSON.stringify(values),
       headers: {
-        "Content-Type": "application/json",},
-    })
-.then( (res) => {
-    console.log(res.status);
-     
-})
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      console.log(res.status);
+    });
   };
 
   return (
@@ -139,6 +135,7 @@ const AddStudent = () => {
                         placeholder="admissiondate"
                         label="AdmissionDate"
                         id="addmissionDate"
+                        type="date"
                         value={values.addmissionDate}
                         onChange={handleChange}
                       />
@@ -161,6 +158,15 @@ const AddStudent = () => {
                         onChange={handleChange}
                       />
 
+                      <TextField
+                        className="w-100 mt-3"
+                        placeholder="Semester"
+                        label="Current Semester"
+                        id="semester"
+                        value={values.semester}
+                        onChange={handleChange}
+                      />
+
                       {/* <TextField
                         className="w-100 mt-3"
                         placeholder="semesterfees"
@@ -180,7 +186,7 @@ const AddStudent = () => {
                       />
 
                       <Button
-                      type="submit"
+                        type="submit"
                         variant="contained"
                         color="secondary"
                         className="button w-100 mt-4"
