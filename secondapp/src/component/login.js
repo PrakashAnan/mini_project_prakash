@@ -9,12 +9,17 @@ import {
   TextField,
 } from "@mui/material";
 import { Formik } from "formik";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import app_config from "./config";
 
 const Login = () => {
 
+
+
 const url=app_config.api_url;
+ 
+const navigate=useNavigate();
 
    const loginForm  ={
        username:"",
@@ -30,13 +35,19 @@ const url=app_config.api_url;
             headers: {
               "Content-Type": "application/json",}
         })
-        .then((res) => {
+        .then( ( res) => {
             console.log(res.status);
             if (res.status === 200) {
                 Swal.fire({
                 icon: "success",
                 title: "Success",
                 text: "Loggedin Successfully",
+              }).then(()=>{
+                  res.json().then((data) =>{
+                  sessionStorage.setItem("user",JSON.stringify(data));
+                  navigate("/liststudent");
+                  });
+                  
               });
             } else if (res.status === 300) {
               Swal.fire({

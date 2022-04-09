@@ -17,8 +17,10 @@ function App() {
     <div className="App">
       
       <Head></Head>
+      
       <BrowserRouter>
       <Header></Header>
+    
       
       {/* <Link to="/home">home now</Link> */}
       <Routes>
@@ -28,7 +30,7 @@ function App() {
         <Route element={<Contactus></Contactus>} path="/contactus" />
         <Route element={<Aboutus></Aboutus>} path="/aboutus" />
         <Route element={<AddStudent></AddStudent>} path="/addstudent" />
-        <Route element={<Home></Home>} path="/home" />
+        <Route element={<Home></Home>} path="" />
         <Route element={<ListStudent></ListStudent>} path="/liststudent" />
         
         

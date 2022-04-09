@@ -41,39 +41,7 @@ const ListStudent = () => {
               <h4>{student.studentName}</h4>
             </AccordionSummary>
             <AccordionDetails>
-              {/* <Grid container>
-                <Grid item md={12}>
-                  <div className="list">
-                    <table>
-                      <tr>
-                        <th>Father's Name</th>
-                        <th>Date of birth</th>
-                        <th>Roll no</th>
-                        <th>CourseName</th>
-                        <th>BranchName</th>
-                        <th>AdmissionDate</th>
-                        <th>Duration</th>
-                        <th>SemesterFees</th>
-                        <th>TotalAmountPaid</th>
-                        <th>Address</th>
-                      </tr>
-
-                      <tr>
-                        <td>{student.fatherName}</td>
-                        <td>{student.dob}</td>
-                        <td>{student.rollno}</td>
-                        <td>{student.courseName}</td>
-                        <td>{student.branchName}</td>
-                        <td>{student.admissionDate}</td>
-                        <td>{student.duration}</td>
-                        <td>{student.semesterFees}</td>
-                        <td>{student.totalAmountPaid}</td>
-                        <td>{student.address}</td>
-                      </tr>
-                    </table>
-                  </div>
-                </Grid>
-              </Grid> */}
+             
 
               <Grid container>
                 <Grid item md={12}>

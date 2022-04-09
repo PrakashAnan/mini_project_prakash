@@ -11,11 +11,15 @@ import "./addstudent.css";
 import { Formik } from "formik";
 // without refreshing th epage we should add the data thats why we use formik
 import app_config from "./config";
+import { useState } from "react";
 
 
 const AddStudent = () => {
 
     const url = app_config.api_url;
+    const [currentUser, setcurrentUser] = useState(
+      JSON.parse(sessionStorage.getItem("user"))
+    )
   
 // 1.CREATE A FORM OBJECT
   const productForm = {
