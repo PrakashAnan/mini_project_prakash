@@ -49,13 +49,21 @@ const ListStudent = () => {
     return false;
   };
 
+  const checkYear = ({ year, yearFees, totalAmountPaid }, checkYear) => {
+    console.log((checkYear * yearFees) / totalAmountPaid);
+    return (checkYear * yearFees) / totalAmountPaid > 1 ? false : true;
+  };
+
+  const checkBalance = ({ year, yearFees, totalAmountPaid }) => {
+    return yearFees * year - totalAmountPaid;
+  };
+
   const displayStudents = () => {
     if (!loading) {
       return productArray.map((student) => (
         <div className="container mt-2">
           <Accordion>
             <AccordionSummary>
-                    
               <h4>StudentName:</h4>
               <h4>{student.studentName}</h4>
             </AccordionSummary>
@@ -85,6 +93,9 @@ const ListStudent = () => {
                     <li class="list-group-item">
                       TotalAmountPaid:{student.totalAmountPaid}
                     </li>
+                    <li class="list-group-item">
+                      Remaining Fees:{checkBalance(student)}
+                    </li>
                     <li class="list-group-item">Address::{student.address}</li>
                   </ul>
                   <Button
@@ -103,25 +114,33 @@ const ListStudent = () => {
                         <ul class="list-group">
                           <li class="list-group-item">
                             <FormControlLabel
-                              control={<Checkbox defaultChecked />}
+                              control={
+                                <Checkbox checked={checkYear(student, 1)} />
+                              }
                               label="1st YEAR"
                             />
                           </li>
                           <li class="list-group-item">
                             <FormControlLabel
-                              control={<Checkbox defaultChecked />}
+                              control={
+                                <Checkbox checked={checkYear(student, 2)} />
+                              }
                               label="2nd YEAR"
                             />
                           </li>
                           <li class="list-group-item">
                             <FormControlLabel
-                              control={<Checkbox defaultChecked />}
+                              control={
+                                <Checkbox checked={checkYear(student, 3)} />
+                              }
                               label="3rd YEAR"
                             />
                           </li>
                           <li class="list-group-item">
                             <FormControlLabel
-                              control={<Checkbox defaultChecked />}
+                              control={
+                                <Checkbox checked={checkYear(student, 4)} />
+                              }
                               label="4th YEAR"
                             />
                           </li>
@@ -142,7 +161,6 @@ const ListStudent = () => {
                           control={<Checkbox defaultChecked />}
                           label="4th YEAR"
                         /> */}
-                      
                       </div>
                     </Card>
                   </Paper>
