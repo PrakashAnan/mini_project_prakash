@@ -1,13 +1,24 @@
 import { useEffect, useState } from "react";
 import app_config from "./config";
-import { Grid, Card, CardContent, Paper, Button } from "@mui/material";
+import {
+  Grid,
+  Card,
+  CardContent,
+  Paper,
+  Button,
+  Checkbox,
+  FormControlLabel,
+} from "@mui/material";
 import Accordion from "@mui/material/Accordion";
+import "./liststudent.css";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 
 const ListStudent = () => {
   const [productArray, setProductArray] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
   const url = app_config.api_url;
 
@@ -32,7 +43,7 @@ const ListStudent = () => {
   //   jaise hi ye page opn hoga fetch data chlega
 
   const checkDefaulter = (student) => {
-    if (student.semesterFees * student.semester > student.totalAmountPaid) {
+    if (student.yearFees * student.year > student.totalAmountPaid) {
       return true;
     }
     return false;
@@ -41,20 +52,23 @@ const ListStudent = () => {
   const displayStudents = () => {
     if (!loading) {
       return productArray.map((student) => (
-        <div className="container">
+        <div className="container mt-2">
           <Accordion>
             <AccordionSummary>
-              <h3>StudentName:</h3>
+                    
+              <h4>StudentName:</h4>
               <h4>{student.studentName}</h4>
             </AccordionSummary>
             <AccordionDetails>
-              <Grid container>
-                <Grid item md={12}>
+              <Grid container spacing={2}>
+                <Grid item md={6}>
                   <ul class="list-group">
                     <li class="list-group-item">
                       FatherName:{student.fatherName}
                     </li>
-                    <li class="list-group-item">Date Of Birth{student.dob}</li>
+                    <li class="list-group-item">
+                      Date Of Birth::{student.dob}
+                    </li>
                     <li class="list-group-item">Roll no:{student.rollno}</li>
                     <li class="list-group-item">
                       CourseName:{student.courseName}
@@ -66,23 +80,72 @@ const ListStudent = () => {
                       AddmissionDate:{student.admissionDate}
                     </li>
                     <li class="list-group-item">Duration:{student.duration}</li>
-                    <li class="list-group-item">
-                      Current Semester:{student.semester}
-                    </li>
-                    <li class="list-group-item">
-                      SemesterFees:{student.semesterFees}
-                    </li>
+                    <li class="list-group-item">Current Year:{student.year}</li>
+                    <li class="list-group-item">YearFees:{student.yearFees}</li>
                     <li class="list-group-item">
                       TotalAmountPaid:{student.totalAmountPaid}
                     </li>
-                    <li class="list-group-item">Address:{student.address}</li>
+                    <li class="list-group-item">Address::{student.address}</li>
                   </ul>
                   <Button
                     variant="contained"
+                    className="mt-2 w-100 "
                     color={checkDefaulter(student) ? "error" : "success"}
                   >
                     {checkDefaulter(student) ? "Defaulter" : "Fee Cleared"}
                   </Button>
+                </Grid>
+                <Grid item md={6}>
+                  <Paper>
+                    <Card>
+                      <div className="check mt-2">
+                        <h2>Fees Deposited</h2>
+                        <ul class="list-group">
+                          <li class="list-group-item">
+                            <FormControlLabel
+                              control={<Checkbox defaultChecked />}
+                              label="1st YEAR"
+                            />
+                          </li>
+                          <li class="list-group-item">
+                            <FormControlLabel
+                              control={<Checkbox defaultChecked />}
+                              label="2nd YEAR"
+                            />
+                          </li>
+                          <li class="list-group-item">
+                            <FormControlLabel
+                              control={<Checkbox defaultChecked />}
+                              label="3rd YEAR"
+                            />
+                          </li>
+                          <li class="list-group-item">
+                            <FormControlLabel
+                              control={<Checkbox defaultChecked />}
+                              label="4th YEAR"
+                            />
+                          </li>
+                        </ul>
+                        {/* <FormControlLabel
+                          control={<Checkbox defaultChecked />}
+                          label="1st YEAR"
+                        />
+                        <FormControlLabel
+                          control={<Checkbox defaultChecked />}
+                          label="2nd YEAR"
+                        />
+                        <FormControlLabel
+                          control={<Checkbox defaultChecked />}
+                          label="3rd YEAR"
+                        />
+                        <FormControlLabel
+                          control={<Checkbox defaultChecked />}
+                          label="4th YEAR"
+                        /> */}
+                      
+                      </div>
+                    </Card>
+                  </Paper>
                 </Grid>
               </Grid>
             </AccordionDetails>

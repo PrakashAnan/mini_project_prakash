@@ -9,10 +9,10 @@ const mySchema = new mongoose.Schema({
   branchName: String,
   admissionDate: String,
   duration: Number,
-  semesterFees: Number,
+  yearFees: Number,
   totalAmountPaid: Number,
   address: String,
-  semester: Number,
+  year: Number,
   createdAt: { type: Date, default: new Date() },
 });
 

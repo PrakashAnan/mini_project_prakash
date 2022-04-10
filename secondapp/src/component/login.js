@@ -4,6 +4,7 @@ import {
   Card,
   CardContent,
   Checkbox,
+  FormControlLabel,
   Grid,
   Paper,
   TextField,
@@ -14,52 +15,46 @@ import Swal from "sweetalert2";
 import app_config from "./config";
 
 const Login = () => {
+  const url = app_config.api_url;
 
+  const navigate = useNavigate();
 
+  const loginForm = {
+    username: "",
+    password: "",
+    mobileno: "",
+  };
 
-const url=app_config.api_url;
- 
-const navigate=useNavigate();
-
-   const loginForm  ={
-       username:"",
-       password:"",
-       mobileno:"",
-   }
-
-   const loginSubmit = (values) =>{
-        console.log(values);
-        fetch(url+'/teacher/checklogin',{
-            method:'POST',
-            body: JSON.stringify(values),
-            headers: {
-              "Content-Type": "application/json",}
-        })
-        .then( ( res) => {
-            console.log(res.status);
-            if (res.status === 200) {
-                Swal.fire({
-                icon: "success",
-                title: "Success",
-                text: "Loggedin Successfully",
-              }).then(()=>{
-                  res.json().then((data) =>{
-                  sessionStorage.setItem("user",JSON.stringify(data));
-                  navigate("/liststudent");
-                  });
-                  
-              });
-            } else if (res.status === 300) {
-              Swal.fire({
-                icon: "error",
-                title: "Failed",
-                text: "Loggedin Failed",
-              });
-            }
-          })
-   }
-
-
+  const loginSubmit = (values) => {
+    console.log(values);
+    fetch(url + "/teacher/checklogin", {
+      method: "POST",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      console.log(res.status);
+      if (res.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Loggedin Successfully",
+        }).then(() => {
+          res.json().then((data) => {
+            sessionStorage.setItem("user", JSON.stringify(data));
+            navigate("/liststudent");
+          });
+        });
+      } else if (res.status === 300) {
+        Swal.fire({
+          icon: "error",
+          title: "Failed",
+          text: "Loggedin Failed",
+        });
+      }
+    });
+  };
 
   return (
     <div>
@@ -100,9 +95,10 @@ const navigate=useNavigate();
                       />
 
                       <div className="mt-3">
-                        <CheckBox size="small" />
-                        Remember me
-                        <p className="rem">Remember Me</p>
+                        <FormControlLabel
+                          control={<Checkbox defaultChecked />}
+                          label="Remember Me"
+                        />
                       </div>
 
                       <Button

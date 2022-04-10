@@ -25,6 +25,7 @@ const Header = () => {
         <NavLink className="nav-link active" aria-current="page" to="/home">
           Home
         </NavLink>
+        
 
         <li className="nav-item">
           <NavLink className="nav-link" to="/signup">
@@ -56,11 +57,11 @@ const Header = () => {
             AddStudent
           </NavLink>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <NavLink className="nav-link" to="/liststudent">
             ListStudent
           </NavLink>
-        </li>
+        </li> */}
        </ul>
       
       <form class="d-flex">

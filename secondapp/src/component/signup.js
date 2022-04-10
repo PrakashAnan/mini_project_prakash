@@ -4,6 +4,7 @@ import {
   Card,
   CardContent,
   Checkbox,
+  FormControlLabel,
   Grid,
   paper,
   TextField,
@@ -27,24 +28,23 @@ const Signup = () => {
       method: "POST",
       body: JSON.stringify(values),
       headers: {
-        "Content-Type": "application/json",},
+        "Content-Type": "application/json",
+      },
     })
-    .then((res) => {
-      console.log(res.status);
-      if (res.status === 200) {
-        Swal.fire({
-          icon: "success",
-          title: "Success",
-          text: "Registered Successfully",
-        });
-      }
-      return res.json();
-    })
-    .then((data) => {
-      console.log(data);
-    });
-
-    
+      .then((res) => {
+        console.log(res.status);
+        if (res.status === 200) {
+          Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Registered Successfully",
+          });
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   return (
@@ -59,7 +59,6 @@ const Signup = () => {
 
                 <Formik initialValues={signupForm} onSubmit={signupSubmit}>
                   {({ values, handleChange, handleSubmit }) => (
-
                     <form onSubmit={handleSubmit}>
                       <TextField
                         className="w-100"
@@ -101,20 +100,11 @@ const Signup = () => {
                         value={values.password}
                       />
 
-                      {/* <TextField
-                        className="w-100 mt-3"
-                        autoComplete="off"
-                        placeholder="Password"
-                        label="Password"
-                        id="password"
-                        onChange={handleChange}
-                        value={values.password}
-                      /> */}
-
                       <div className="mt-3 save">
-                        <CheckBox></CheckBox>
-                        <span></span>
-                        <p>Save Password</p>
+                        <FormControlLabel
+                          control={<Checkbox defaultChecked />}
+                          label="save password"
+                        />
                       </div>
 
                       <Button
@@ -126,7 +116,7 @@ const Signup = () => {
                         Signin To Continue
                       </Button>
                     </form>
-  )}
+                  )}
                 </Formik>
               </CardContent>
             </Card>

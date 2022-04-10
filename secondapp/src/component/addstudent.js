@@ -28,10 +28,10 @@ const AddStudent = () => {
     courseName: "",
     branchName: "",
     address: "",
-    addmissionDate: new Date(),
+    addmissionDate:"",
     duration: "",
-    semesterFees: "",
-    semester: 1,
+    yearFees: "",
+    year: 1,
     totalAmountPaid: "",
   };
 
@@ -135,7 +135,6 @@ const AddStudent = () => {
                         placeholder="admissiondate"
                         label="AdmissionDate"
                         id="addmissionDate"
-                        type="date"
                         value={values.addmissionDate}
                         onChange={handleChange}
                       />
@@ -143,9 +142,9 @@ const AddStudent = () => {
                       <TextField
                         className="w-100 mt-3"
                         placeholder="semesterfees"
-                        label="SemesterFees"
-                        id="semesterFees"
-                        value={values.semesterFees}
+                        label="YearFees"
+                        id="yearFees"
+                        value={values.yearFees}
                         onChange={handleChange}
                       />
 
@@ -161,20 +160,13 @@ const AddStudent = () => {
                       <TextField
                         className="w-100 mt-3"
                         placeholder="Semester"
-                        label="Current Semester"
-                        id="semester"
-                        value={values.semester}
+                        label="Current Year"
+                        id="year"
+                        value={values.year}
                         onChange={handleChange}
                       />
 
-                      {/* <TextField
-                        className="w-100 mt-3"
-                        placeholder="semesterfees"
-                        label="Semesterfees"
-                        id="semesterfees"
-                        value={values.semesterfees}
-                        onChange={handleChange}
-                      /> */}
+                      
 
                       <TextField
                         className="w-100 mt-3"

@@ -12,6 +12,7 @@ import Head from './component/head';
 import Home from './component/home';
 import ListStudent from './component/liststudents';
 
+
 function App() {
   return (
     <div className="App">
@@ -32,6 +33,7 @@ function App() {
         <Route element={<AddStudent></AddStudent>} path="/addstudent" />
         <Route element={<Home></Home>} path="" />
         <Route element={<ListStudent></ListStudent>} path="/liststudent" />
+       
         
         
       </Routes>
